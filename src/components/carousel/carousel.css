@@ -1,0 +1,39 @@
+.container-carousel {
+   
+   
+    position: relative;
+
+    top: 200px;
+    width : 50vw;
+    height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    border: none;
+    
+    
+    overflow: hidden;
+
+}
+
+.inner-carousel {
+    height: 100%;
+    width: 100%;
+   
+    display: flex;
+    flex-direction: column;
+    
+    flex-wrap: wrap  ;
+    transition : transform 0.6s;
+    transition-timing-function: ease-out;
+    
+}
+
+.btn {
+    border: 1px solid black;
+    position: relative;
+    top : 40px;
+    height: 40px;
+    margin-left: 100px;
+    display: inline;
+}

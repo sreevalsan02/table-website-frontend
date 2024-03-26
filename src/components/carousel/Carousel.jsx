@@ -2,12 +2,23 @@ import "./carousel.css"
 
 import TabInput from "../tabs/tabInput/TabInput"
 import TableDetect from "../tabs/tableDetect/TableDetect"
-import { useState } from "react";
+import UploadingFirst from "../tabs/uploadingFirst/UploadingFirst";
+import { useEffect, useState } from "react";
+
+import { UseSelector, useSelector } from "react-redux";
 
 export default function Carousel() {
-    const variable1 = 20;
+
+    const {selected,imageFile} = useSelector(state => state.imageSelected)
     const [activeIndex,setIndex] = useState(0);
 
+
+    useEffect(()=>{
+        if(selected){
+            console.log('reached carousel')
+            setIndex(1)
+        }
+    },[selected])
     const updateIndex = (newIndex) => {
         if(newIndex<0){
             newIndex = 0;
@@ -23,20 +34,21 @@ export default function Carousel() {
         <div className="container-carousel">
             <div className="inner-carousel" style = {{transform : `translate(-${activeIndex*100}%)`}}>
             <TabInput/>
-          <TableDetect />
+            <UploadingFirst index={activeIndex}/>
+         
             </div>
 
-        <button onClick={()=> {updateIndex(activeIndex+1)}}>
-            go left
+       
+        
+        </div>
+       
+        <button onClick={()=> {updateIndex(activeIndex+1)}} className="btn-carousel">
+            go leftd
         </button>
 
         <button onClick={()=> {updateIndex(activeIndex-1)}}>
             go right
         </button>
-        
-        </div>
-       
-       
        </>
     )
 }

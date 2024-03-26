@@ -2,7 +2,6 @@ import "./home.css"
 import { useEffect, useRef ,useState} from "react";
 import Typed from 'typed.js'
 import { IoArrowDownCircleOutline } from "react-icons/io5";
-import AnimatedIcon from "../../components/animatedIcons/AnimatedIcon";
 
 function ScrollIcon() {
     const [isScrolled, setIsScrolled] = useState(false);

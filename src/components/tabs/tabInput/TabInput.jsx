@@ -2,6 +2,9 @@ import "./tabInput.css"
 import { useState,useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import {select} from "../../../features/imageSelected/imageSelectedSlice"
+import {sendtabDetect} from "../../../features/tabDetect/tabDetectSlice"
+import axios from "axios"
+
 
 function TabInput() {
     const [currentFile,setFile] = useState(null)
@@ -10,7 +13,10 @@ function TabInput() {
         if(currentFile!= null){
             let image_file = URL.createObjectURL(currentFile)
             dispatch(select(image_file))
-            console.log('file selected',image_file)
+            const formData = new FormData();
+            formData.append('the_file', currentFile);
+            dispatch(sendtabDetect(formData))
+           
         }
     },[currentFile])
     return (

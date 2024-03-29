@@ -1,0 +1,39 @@
+.container {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+}
+
+.left {
+    height: 100%;
+    width: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.right {
+    height: 100%;
+    width: 50%;
+    background-color: #E1AFD1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right h1{
+    margin: 2px;
+    padding: 2px;
+}
+.left img {
+    width: 100%;
+    border: 2px solid black;
+}
+
+.ring{
+    color: black;
+}

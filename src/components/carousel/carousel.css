@@ -1,38 +1,123 @@
+.top-container-carousel {
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    position: relative;
+}
+.motion-div1{
+    left: 30px;
+    top: 35vh;
+    position: absolute;
+    
+    
+}
+#text {
+    display:flex;
+    align-items: center;
+
+    background-image: -webkit-linear-gradient(125deg, #f2291b, #f7db25, #84f527);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: hue  5s infinite linear;
+    font-size: 24px;
+
+    font-weight: 200;
+
+    height: 30vh;
+    width: 40vw;
+    transition: opacity 1s ease;
+    
+}
+
+#text h1{
+    font-weight: 400;
+}
+
+.hidden {
+    opacity: 0;
+    /* display: none; */
+    /* display: none; */
+}
+
+@keyframes hue {
+    from {
+        -webkit-filter: hue-rotate(0deg);
+    }
+
+    to {
+        -webkit-filter: hue-rotate(-360deg);
+    }
+}
+
 .container-carousel {
-   
-   
+
+
     position: relative;
 
-    margin-top: 25vh;
-    margin-bottom: 25vh;
-    margin-left: auto;
-    margin-right: auto;
-    width : 50vw;
+
+    width: 50vw;
     height: 50vh;
-   
+
+    border: none;
+    border-radius: 20px;
+
+    /* box-shadow: 0 4px 8px 0 rgba(247, 247, 247, 0.221), 0 6px 20px 0 rgba(255, 255, 255, 0.171); */
+
+
+    overflow: hidden;
+
+    
+    transform: translateX(20vw);
+    transition: transform 2s ease;
+
+}
+
+.container-carousel2 {
+
+
+    position: relative;
+
+
+    width: 50vw;
+    height: 50vh;
+
     border: none;
     border-radius: 20px;
 
 
     overflow: hidden;
 
-    box-shadow: 4px 4px 15px;
+
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+    transform: translateX(0);
+    transition: transform 2s ease;
+
 }
+
 
 .inner-carousel {
     height: 100%;
     width: 100%;
-   
+
     display: flex;
     flex-direction: column;
-    
-    flex-wrap: wrap  ;
-    transition : transform 0.6s;
+
+    flex-wrap: wrap;
+    transition: transform 0.6s;
     transition-timing-function: ease-out;
-    
+
 }
 
 .btn-carousel {
     border: 1px solid black;
-  
+
 }

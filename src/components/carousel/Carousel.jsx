@@ -4,61 +4,109 @@ import TabInput from "../tabs/tabInput/TabInput"
 import TableDetect from "../tabs/tableDetect/TableDetect"
 import UploadingFirst from "../tabs/uploadingFirst/UploadingFirst";
 import { useEffect, useState } from "react";
-
+import { motion } from "framer-motion"
 import { UseSelector, useSelector } from "react-redux";
+
+import { useRef } from "react";
 
 export default function Carousel() {
 
-    const {selected,imageFile} = useSelector(state => state.imageSelected)
-    const {is_tab_detected,cropped_image} = useSelector(state =>state.tabDetect)
+    const { selected, imageFile } = useSelector(state => state.imageSelected)
+    const { is_tab_detected, cropped_image } = useSelector(state => state.tabDetect)
 
-    const [activeIndex,setIndex] = useState(0);
+    const [activeIndex, setIndex] = useState(0);
 
 
-    useEffect(()=>{
-        if(selected && is_tab_detected==false){
+    useEffect(() => {
+        if (selected && is_tab_detected == false) {
             console.log('reached carousel')
             setIndex(1)
         }
-        
-    },[selected])
-    
-    useEffect(()=>{
-        if(is_tab_detected)
-        {
+
+    }, [selected])
+
+    useEffect(() => {
+        if (is_tab_detected) {
             setIndex(2)
         }
-    },[is_tab_detected])
+    }, [is_tab_detected])
     const updateIndex = (newIndex) => {
-        if(newIndex<0){
+        if (newIndex < 0) {
             newIndex = 0;
         }
-        else if (newIndex>=3){
+        else if (newIndex >= 3) {
             newIndex = 2
         }
         setIndex(newIndex)
     }
 
+
+
+    const scrollRef = useRef(null)
+
     return (
         <>
-        <div className="container-carousel">
-            <div className="inner-carousel" style = {{transform : `translate(-${activeIndex*100}%)`}}>
-            <TabInput/>
-            <UploadingFirst index={activeIndex}/>
-            <TableDetect/>
+
+
+
+            <div className="top-container-carousel" ref={scrollRef} >
+
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                        y: 200
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }
+                    }
+                    transition={{
+                        duration: 1,
+                    }}
+
+                    className="motion-div1"
+                >
+                    <div id="text" className= {selected?"hidden" :  ""}>
+                        <h1>Transforming raw data <br />into actionable insights <br />has never been easier.</h1>
+                    </div>
+
+                </motion.div>
+
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                        y: 200
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0
+                    }}
+                    transition={{
+                        duration: 1,
+                       
+                    }}
+                >
+                    <div className= {selected? "container-carousel2":"container-carousel"}>
+                        <div className="inner-carousel" style={{ transform: `translate(-${activeIndex * 100}%)` }}>
+                            <TabInput />
+                            <UploadingFirst index={activeIndex} />
+                            <TableDetect />
+                        </div>
+
+                    </div>
+                </motion.div>
+
+
             </div>
 
-       
-        
-        </div>
-       
-        <button onClick={()=> {updateIndex(activeIndex+1)}} className="btn-carousel">
-            go leftd
-        </button>
+            {/* <button onClick={() => { updateIndex(activeIndex + 1) }} className="btn-carousel">
+                go leftd
+            </button>
 
-        <button onClick={()=> {updateIndex(activeIndex-1)}}>
-            go right
-        </button>
-       </>
+            <button onClick={() => { updateIndex(activeIndex - 1) }}>
+                go right
+            </button> */}
+        </>
     )
 }

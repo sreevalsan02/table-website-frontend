@@ -1,10 +1,8 @@
 import "./tabInput.css"
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { select } from "../../../features/imageSelected/imageSelectedSlice"
 import { sendtabDetect } from "../../../features/tabDetect/tabDetectSlice"
-import axios from "axios"
-import Reveal from "../../framer_reveal/Reveal";
 
 function TabInput() {
     const [currentFile, setFile] = useState(null)
@@ -17,15 +15,16 @@ function TabInput() {
             formData.append('the_file', currentFile);
             dispatch(sendtabDetect(formData))
 
+            console.log('enterd use effect')
         }
-    }, [currentFile])
+    }, [currentFile,dispatch])
     return (
         <>
 
             {/* <Reveal> */}
                 <div className="container-tabInput" >
-                    <div className="tabInput-left" style={{ backgroundImage: "url(/meshGrids/1.webp)" }}>
-                        <h1>Insert Images <br />to extract <br /> tabular data</h1>
+                    <div className="tabInput-left" >
+                        <h1>Insert Images </h1> <h1>to extract</h1> <h1>tabular data</h1>
                     </div>
                     <div className="tabInput-right ">
                         <label htmlFor="file" className="shareOption btn-tabInput">

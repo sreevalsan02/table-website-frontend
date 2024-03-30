@@ -15,23 +15,27 @@
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+    background-image: linear-gradient(#000,#151414);
+
 }
 
 .tabInput-left h1 {
-    padding: 20px;
+    margin: 0px;
     font-weight: 500;
     opacity: 0.9;
-    display: flex;
+    color: white;
     
+
 }
 
 .tabInput-right {
     width: 50%;
     height: 100%;
-    background-color: white;
+    background-image: linear-gradient(#000,#151414);
+    /* background-color: rgb(238, 238, 238); */
     display: flex;
     align-items: center;
     justify-content : center;
@@ -40,7 +44,7 @@
 .btn-tabInput {
     height: 70px;
     width: 160px;
-    border: 3px solid rgb(105, 32, 173);
+    
     border-radius: 10px;
     background-color: white;
     cursor: pointer;

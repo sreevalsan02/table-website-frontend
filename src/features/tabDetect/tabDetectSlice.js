@@ -1,10 +1,16 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios"
+// const API_URL = 'https://valid-jaybird-lightly.ngrok-free.app/upload'
+// const API_URL = 'http://127.0.0.1:8000/upload'
+// const API_URL = 'https://table-website-backend-zz7lsswbvq-el.a.run.app:8000/upload'
+const API_URL = 'http://35.200.196.210/upload'
+
 
 export const sendtabDetect = createAsyncThunk('/sendtabDetect',
 async(formData,thunkAPI) => {
+    
     try{
-        const response = await axios.post('https://valid-jaybird-lightly.ngrok-free.app/upload', formData, {
+        const response = await axios.post(API_URL, formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },

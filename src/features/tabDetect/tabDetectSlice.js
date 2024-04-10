@@ -1,9 +1,9 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios"
 // const API_URL = 'https://valid-jaybird-lightly.ngrok-free.app/upload'
-// const API_URL = 'http://127.0.0.1:8000/upload'
+const API_URL = 'http://127.0.0.1:8000/upload'
 // const API_URL = 'https://table-website-backend-zz7lsswbvq-el.a.run.app:8000/upload'
-const API_URL = 'https://tabledetection.us.to/upload'
+// const API_URL = 'https://tabledetection.us.to/upload'
 
 
 export const sendtabDetect = createAsyncThunk('/sendtabDetect',
@@ -38,8 +38,9 @@ const tabDetectSlice = createSlice({
         cropped_image : ""
     },
     reducers : {
-        reset : state => {
+        reset_tabDetect : state => {
             state.is_tab_detected = false
+            URL.revokeObjectURL(state.cropped_image)
             state.cropped_image = ""
         }
     },
@@ -60,5 +61,5 @@ const tabDetectSlice = createSlice({
     }
 })
 
-export const {reset} = tabDetectSlice.actions
+export const {reset_tabDetect} = tabDetectSlice.actions
 export default tabDetectSlice.reducer

@@ -5,25 +5,25 @@ import TableDetect from "../tabs/tableDetect/TableDetect"
 import UploadingFirst from "../tabs/uploadingFirst/UploadingFirst";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion"
-import { UseSelector, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
 import { useRef } from "react";
 
 export default function Carousel() {
 
-    const { selected, imageFile } = useSelector(state => state.imageSelected)
-    const { is_tab_detected, cropped_image } = useSelector(state => state.tabDetect)
+    const selected = useSelector(state => state.imageSelected.selected)
+    const is_tab_detected = useSelector(state => state.tabDetect.is_tab_detected)
 
     const [activeIndex, setIndex] = useState(0);
 
 
     useEffect(() => {
-        if (selected && is_tab_detected == false) {
+        if (selected && is_tab_detected === false) {
             console.log('reached carousel')
             setIndex(1)
         }
 
-    }, [selected])
+    }, [selected,is_tab_detected])
 
     useEffect(() => {
         if (is_tab_detected) {
@@ -89,9 +89,10 @@ export default function Carousel() {
                 >
                     <div className= {selected? "container-carousel2":"container-carousel"}>
                         <div className="inner-carousel" style={{ transform: `translate(-${activeIndex * 100}%)` }}>
+                            
                             <TabInput />
                             <UploadingFirst index={activeIndex} />
-                            <TableDetect />
+                            <TableDetect updates= {updateIndex}/>
                         </div>
 
                     </div>
@@ -100,13 +101,13 @@ export default function Carousel() {
 
             </div>
 
-            {/* <button onClick={() => { updateIndex(activeIndex + 1) }} className="btn-carousel">
+            <button onClick={() => { updateIndex(activeIndex + 1) }} className="btn-carousel">
                 go leftd
             </button>
 
             <button onClick={() => { updateIndex(activeIndex - 1) }}>
                 go right
-            </button> */}
+            </button>
         </>
     )
 }

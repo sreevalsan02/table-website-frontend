@@ -12,13 +12,13 @@ const imageSelectedSlice = createSlice({
             state.selected = true
             state.image = action.payload
         },
-        reset : (state) => {
+        reset_select : (state) => {
             state.selected = false
             state.image = null
         }
     }
 })
 
-export const {select,reset} = imageSelectedSlice.actions
+export const {select,reset_select} = imageSelectedSlice.actions
 
 export default imageSelectedSlice.reducer

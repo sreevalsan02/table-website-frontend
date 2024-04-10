@@ -1,27 +1,27 @@
 import "./tabInput.css"
-import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { select } from "../../../features/imageSelected/imageSelectedSlice"
 import { sendtabDetect } from "../../../features/tabDetect/tabDetectSlice"
 
 function TabInput() {
-    const [currentFile, setFile] = useState(null)
     const dispatch = useDispatch()
-    useEffect(() => {
-        if (currentFile != null) {
-            let image_file = URL.createObjectURL(currentFile)
-            dispatch(select(image_file))
-            const formData = new FormData();
-            formData.append('the_file', currentFile);
-            dispatch(sendtabDetect(formData))
 
-            console.log('enterd use effect')
-        }
-    }, [currentFile,dispatch])
+    function file_change(e){
+        let file = e.target.files[0]
+        if (file) {
+            console.log('hehe entered hereereere')
+             let image_file = URL.createObjectURL(file)
+             dispatch(select(image_file))
+             const formData = new FormData();
+             formData.append('the_file', file);
+             dispatch(sendtabDetect(formData))
+         }
+       
+        e.target.value = null
+    }
     return (
         <>
 
-            {/* <Reveal> */}
                 <div className="container-tabInput" >
                     <div className="tabInput-left" >
                         <h1>Insert Images </h1> <h1>to extract</h1> <h1>tabular data</h1>
@@ -33,7 +33,7 @@ function TabInput() {
 
                             <input style={{ display: "none" }}
                                 type="file" id="file" accept=".png,.jpeg,.jpg"
-                                onChange={(e) => setFile(e.target.files[0])}
+                                onChange={file_change}
                             />
                         </label>
 
@@ -41,7 +41,6 @@ function TabInput() {
 
                 </div>
 
-            {/* </Reveal> */}
 
         </>
     )

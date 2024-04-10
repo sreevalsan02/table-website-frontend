@@ -101,13 +101,13 @@ export default function Carousel() {
 
             </div>
 
-            <button onClick={() => { updateIndex(activeIndex + 1) }} className="btn-carousel">
+            {/* <button onClick={() => { updateIndex(activeIndex + 1) }} className="btn-carousel">
                 go leftd
             </button>
 
             <button onClick={() => { updateIndex(activeIndex - 1) }}>
                 go right
-            </button>
+            </button> */}
         </>
     )
 }

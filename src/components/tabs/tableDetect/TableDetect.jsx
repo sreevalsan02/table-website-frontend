@@ -11,7 +11,7 @@ function TableDetect({updates}) {
     function download_fun() {
         const a = document.createElement('a');
         a.href = cropped_image;
-        a.download = 'output_final.xlsx';
+        a.download = 'output_final.zip';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);

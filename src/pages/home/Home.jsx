@@ -5,23 +5,24 @@ import { IoArrowDownCircleOutline } from "react-icons/io5";
 
 function ScrollIcon() {
     const [isScrolled, setIsScrolled] = useState(false);
-
+    
     useEffect(() => {
         const handleScroll = () => {
             // Check if the user has scrolled past a certain threshold (e.g., 100 pixels)
             if (window.scrollY > window.innerHeight - 400) {
-                setIsScrolled(true); // Set state to true if scrolled past the threshold
+                setIsScrolled(true); 
             } else {
                 setIsScrolled(false); // Set state to false if scrolled back up
             }
         };
-
+       
         // Add scroll event listener when component mounts
         window.addEventListener('scroll', handleScroll);
 
         // Clean up by removing scroll event listener when component unmounts
         return () => {
             window.removeEventListener('scroll', handleScroll);
+
         };
     }, []); // Empty dependency array ensures the effect runs only once when component mounts
 

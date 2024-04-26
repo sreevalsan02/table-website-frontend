@@ -1,6 +1,6 @@
 import "./tabInput.css"
 import { useDispatch } from "react-redux";
-import { select } from "../../../features/imageSelected/imageSelectedSlice"
+import { select, select_name } from "../../../features/imageSelected/imageSelectedSlice"
 import { sendtabDetect } from "../../../features/tabDetect/tabDetectSlice"
 
 function TabInput() {
@@ -11,6 +11,7 @@ function TabInput() {
         if (file) {
             console.log('hehe entered hereereere')
              let image_file = URL.createObjectURL(file)
+             dispatch(select_name(file.name))
              dispatch(select(image_file))
              const formData = new FormData();
              formData.append('the_file', file);
@@ -32,7 +33,7 @@ function TabInput() {
                             upload image
 
                             <input style={{ display: "none" }}
-                                type="file" id="file" accept=".png,.jpeg,.jpg"
+                                type="file" id="file" accept=".png,.jpeg,.jpg,.pdf"
                                 onChange={file_change}
                             />
                         </label>

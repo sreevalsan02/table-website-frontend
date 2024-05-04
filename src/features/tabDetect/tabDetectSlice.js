@@ -1,9 +1,9 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios"
 // const API_URL = 'https://valid-jaybird-lightly.ngrok-free.app/upload'
-const API_URL = 'http://127.0.0.1:5000/upload'
+// const API_URL = 'http://127.0.0.1:5000/upload'
 // const API_URL = 'https://table-website-backend-zz7lsswbvq-el.a.run.app:8000/upload'
-// const API_URL = 'https://tabledetection.us.to/upload'
+const API_URL = 'https://tabledetection.us.to/upload'
 
 
 export const sendtabDetect = createAsyncThunk('/sendtabDetect',

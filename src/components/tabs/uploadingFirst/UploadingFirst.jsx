@@ -9,7 +9,6 @@ function UploadingFirst({index}) {
     useEffect(()=>{
         if(selected){
             console.log(name)
-
         }
     },[image,selected,name])
     return(
